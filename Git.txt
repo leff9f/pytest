@@ -37,7 +37,7 @@ git remote add origin https://leff9f@bitbucket.org/leff9f/bigcity.git
 
 git remote set-url origin https://leff9f@bitbucket.org/leff9f/bigcity.git
 
-git push -u origin master - не знаю что это
+git push -u origin master - переместить файлы в remote repo
 
 //скачивание производится:
 git clone //ссылка(сайт откуда)  loft (куда)
