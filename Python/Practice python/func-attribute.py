@@ -7,4 +7,5 @@ def tester(start):
 
 F = tester(0)
 F("first")
-F("second")
+b = F("second")
+print(str(b))
