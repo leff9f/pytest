@@ -15,9 +15,13 @@ if im.status_code == requests.codes.ok:
     soup = BeautifulSoup(im_text, "html.parser")
     # считываем данные
     dirty_image_ad = soup.find_all("img", class_="pxc-img")
-    # выгружаем текст
-    image_ad = str(dirty_image_ad)
-    soup = BeautifulSoup(image_ad, "html.parser")
-    image_ad = soup.get_text()
 
-    print(dirty_image_ad)
+# выгружаем текст
+image_src = str(dirty_image_ad).split()
+image_url_proc = image_src[3].lstrip("\"src=").rstrip("\"")
+image_url_small = "https://www.phoenixcontact.com/"+image_url_proc
+image_url_large = image_url_small.replace("small1", "large")
+image_url_large = image_url_large.replace("int_01", "int_04")
+#url = "https://www.phoenixcontact.com/assets/images_pr/product_photos/large/25176_1000_int_04.jpg"
+
+print(image_url_large)

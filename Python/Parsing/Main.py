@@ -17,6 +17,7 @@ part_num = open_num_sync()
 # запрос данных
 #a = data_search(part_num)
 b = image_search(part_num)
+image_download(b, part_num)
 print(b)
 
 t1 = Terminals("text", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)

@@ -2,7 +2,7 @@ def data_import(i):
     from openpyxl import load_workbook
     import os
 
-    wb = load_workbook(os.path.abspath("d:\OceanWork\PhoenixCo parsing\Terminals.xlsx"), read_only=True)  # open file
+    wb = load_workbook(os.path.abspath("Terminals.xlsx"), read_only=True)  # open file
     sheet_terminals = wb['terminals']  # select work sheet
 
     d = sheet_terminals.max_row
@@ -17,7 +17,7 @@ def data_save(i, j, k):
     from openpyxl import load_workbook
     import os
 
-    wb = load_workbook(os.path.abspath("d:\OceanWork\PhoenixCo parsing\Terminals.xlsx"))  # open file
+    wb = load_workbook(os.path.abspath("Terminals.xlsx"))  # open file
     sheet = wb["ROPTerminals"]  # select work sheet
     sheet.cell(row=i, column=j).value = k
     wb.save(filename="d:\OceanWork\PhoenixCo parsing\Terminals.xlsx")
@@ -27,7 +27,7 @@ def data_num():
     from openpyxl import load_workbook
     import os
 
-    wb = load_workbook(os.path.abspath("d:\OceanWork\PhoenixCo parsing\Terminals.xlsx"), read_only=True)  # open file
+    wb = load_workbook(os.path.abspath("Terminals.xlsx"), read_only=True)  # open file
     sheet_terminals = wb['terminals']  # select work sheet
 
     i = sheet_terminals.max_row
@@ -35,10 +35,14 @@ def data_num():
 
 
 def open_num_sync():
-    temp_file = open('temp')
-    last_used_num = temp_file.read()
-    temp_file.close()
-    return data_import(int(last_used_num))
+    import os
+    if os.path.isfile('temp'):
+        temp_file = open('temp', 'r')
+        last_used_num = temp_file.read()
+        temp_file.close()
+        return data_import(int(last_used_num))
+    else:
+        return int(1)
 
 
 def save_num_sync(last_used_num):
@@ -130,11 +134,27 @@ def image_search(i):
         # считываем данные
         dirty_image_ad = soup.find_all("img", class_="pxc-img")
         # выгружаем текст
-        image_ad = str(dirty_image_ad)
-        soup = BeautifulSoup(image_ad, "html.parser")
-        image_ad = soup.get_text()
+        image_src = str(dirty_image_ad).split()
+        image_url_proc = image_src[3].lstrip("\"src=").rstrip("\"")
+        image_url_small = "https://www.phoenixcontact.com/" + image_url_proc
+        image_url_large = image_url_small.replace("small1", "large")
+        image_url_large = image_url_large.replace("int_01", "int_04")
+        return image_url_large
+    return 1
 
-        return image_ad
+
+def image_download(i, j):
+    import requests
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko',
+        }
+
+    url = i
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        with open(j+".jpg", 'wb') as f:
+            f.write(response.content)
+
 
 #    url = "https://www.phoenixcontact.com/assets/images_pr/product_photos/large/25176_1000_int_04.jpg"
 #    response = requests.get(url, headers=headers)
