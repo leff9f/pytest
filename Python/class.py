@@ -10,6 +10,9 @@ class ResPar:
         return desc_str
 
 fc = ResPar()
-fc.name = "toyota"; fc.kind = "sedan"; fc.color = "blue"
+fc.name = "toyota"
+fc.kind = "sedan"
+fc.color = "blue"
+
 print(fc.description())
 

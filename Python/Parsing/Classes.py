@@ -1,26 +1,56 @@
 class Terminals:
-    def __init__(self, desc, short_desc, part_num, num_of_lev, num_of_conn,
-                 potent, nom_cross_sect, color, max_pow_dis, max_load_curr,
-                 nom_curr, nom_volt, weight, length, depth, type_of_conn,
-                 conduct_cross_min, conduct_cross_max):
-        self.desc = desc
-        self.short_desc = short_desc
+    MANUFACTURE = "PHOENIX"
+    UNIT = "шт"
+
+    def __init__(self, part_num, short_desc, desc, tech_data, comm_data):
         self.part_num = part_num
-        self.num_of_lev = num_of_lev
-        self.num_of_conn = num_of_conn
-        self.potent = potent
-        self.nom_cross_sect = nom_cross_sect
-        self.color = color
-        self.max_pow_dis = max_pow_dis
-        self.max_load_curr = max_load_curr
-        self.nom_curr = nom_curr
-        self.nom_volt = nom_volt
-        self.weight = weight
-        self.length = length
-        self.depth = depth
-        self.type_of_conn = type_of_conn
-        self.conduct_cross_min = conduct_cross_min
-        self.conduct_cross_max = conduct_cross_max
+        self.short_desc = short_desc
+        self.desc = desc
+        self.tech_data = tech_data
+        self.comm_data = comm_data
+
+    def type_num(self):
+        text = str(self.short_desc)
+        res = str(text).find(" - ")
+        res1 = str(text).rfind(" - ")
+        text = text[res + 3:res1]
+        return text
+
+    def cat_page(self):
+        ind = int(self.comm_data.index('Страница каталога'))
+        return str(self.comm_data[ind + 1])
+
+    def pack_unit(self):
+        ind = int(self.comm_data.index('Упаковочная единица '))
+        return str(self.comm_data[ind + 1]).strip(' stk')
+
+
+"""
+    def out(self, cp, pu, u,
+         wg, wd, h, d, ia, c, m,
+         cs, cmin, cmax, cur, vol):
+        self.type_num = self.short_desc
+        
+        self.cat_page = cp
+        self.pack_unit = pu
+        self.unit = u
+        self.weight = wg
+        self.width = wd
+        self.height = h
+        self.depth = d
+        self.img_add = ia
+        self.colour = c
+        self.material = m
+        self.cross_sect = cs
+        self.cross_min = cmin
+        self.cross_max = cmax
+        self.current = cur
+        self.voltage = vol
+"""
+
+
+
+
 
 
 

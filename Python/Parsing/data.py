@@ -1,12 +1,13 @@
 def data_import(i):
     from openpyxl import load_workbook
     import os
-
-    wb = load_workbook(os.path.abspath("Terminals.xlsx"), read_only=True)  # open file
-    sheet_terminals = wb['terminals']  # select work sheet
-
+    # open file
+    wb = load_workbook(os.path.abspath("Terminals.xlsx"), read_only=True)
+    # select work sheet
+    sheet_terminals = wb['terminals']
+    # counting of data cells
     d = sheet_terminals.max_row
-
+    # checking of existing data in cell, return values
     if i <= d:
         return sheet_terminals['G' + str(i)].value
     else:
@@ -15,12 +16,11 @@ def data_import(i):
 
 def data_save(i, j, k):
     from openpyxl import load_workbook
-    import os
 
-    wb = load_workbook(os.path.abspath("Terminals.xlsx"))  # open file
+    wb = load_workbook("Terminals.xlsx")  # open file
     sheet = wb["ROPTerminals"]  # select work sheet
     sheet.cell(row=i, column=j).value = k
-    wb.save(filename="d:\OceanWork\PhoenixCo parsing\Terminals.xlsx")
+    wb.save(filename="Terminals.xlsx")
 
 
 def data_num():
@@ -34,13 +34,15 @@ def data_num():
     return i
 
 
-def open_num_sync():
+def open_last_num():
     import os
+    # open last used num
     if os.path.isfile('temp'):
         temp_file = open('temp', 'r')
         last_used_num = temp_file.read()
         temp_file.close()
-        return data_import(int(last_used_num))
+    # using function data_import
+        return int(last_used_num)
     else:
         return int(1)
 
@@ -75,12 +77,16 @@ def data_search(i):
         # считываем данные
         dirty_desc = soup.find_all("div", class_="pxc-prod-detail-txt")
         dirty_short_desc = soup.h1
-        dirty_tech_data = soup.find("table", class_="pxc-tbl")
+        dirty_tech_data = soup.find_all("table", class_="pxc-tbl")
+       # len(soup.find_all("table", class_="pxc-tbl")) can count num of tables, and split them
+       # test = soup.find_all("table", class_="pxc-tbl")[0]
+
         soup.clear()
         # выгружаем текст
         desc = str(dirty_desc)
         soup = BeautifulSoup(desc, "html.parser")
         desc = soup.get_text()
+        desc = desc.split("\n")
         # выгружаем текст
         short_desc = str(dirty_short_desc)
         soup = BeautifulSoup(short_desc, "html.parser")
@@ -89,12 +95,12 @@ def data_search(i):
         tech_data = str(dirty_tech_data)
         soup = BeautifulSoup(tech_data, "html.parser")
         tech_data = soup.get_text()
-        tech_data1 = tech_data.split("\n")
-        tech_data2 = []
+        tech_data = tech_data.split("\n")
+        tech_data1 = []
         # пересобираем текстовые данные
-        for a in tech_data1:
-            if a != '':
-                tech_data2.append(a)
+        for a in tech_data:
+            if a != '' and a != '[' and a != ']' and a !=', ':
+                tech_data1.append(a)
 
         # загружаем данные в парсер
         soup = BeautifulSoup(s_text, "html.parser")
@@ -105,15 +111,16 @@ def data_search(i):
         comm_data = str(dirty_comm_data)
         soup = BeautifulSoup(comm_data, "html.parser")
         comm_data = soup.get_text()
-        comm_data1 = comm_data.split("\n")
-        comm_data2 = []
+        comm_data = comm_data.split("\n")
+        comm_data1 = []
         # пересобираем текстовые данные
-        for a in comm_data1:
+        for a in comm_data:
             if a != '':
-                comm_data2.append(a)
+                comm_data1.append(a)
 
-        return desc, short_desc, tech_data2, comm_data2
-
+        return short_desc, desc[1], tech_data1, comm_data1
+    else:
+        return 0
 
 def image_search(i):
     import requests
@@ -140,7 +147,7 @@ def image_search(i):
         image_url_large = image_url_small.replace("small1", "large")
         image_url_large = image_url_large.replace("int_01", "int_04")
         return image_url_large
-    return 1
+    return 0
 
 
 def image_download(i, j):
