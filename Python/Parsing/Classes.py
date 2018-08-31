@@ -24,29 +24,90 @@ class Terminals:
         ind = int(self.comm_data.index('Упаковочная единица '))
         return str(self.comm_data[ind + 1]).strip(' stk')
 
+    def weight(self):
+        ind = int(self.comm_data.index('Вес/шт. (без упаковки)'))
+        if ind:
+            weight = str(self.comm_data[ind + 1]).strip(' GRM')
+            weight = weight.replace(',', '.')
+            weight = float(weight)
+            weight = int(weight)
+            if weight < 10:
+                return 0.01
+            else:
+                return weight/1000
 
-"""
-    def out(self, cp, pu, u,
-         wg, wd, h, d, ia, c, m,
-         cs, cmin, cmax, cur, vol):
-        self.type_num = self.short_desc
-        
-        self.cat_page = cp
-        self.pack_unit = pu
-        self.unit = u
-        self.weight = wg
-        self.width = wd
-        self.height = h
-        self.depth = d
-        self.img_add = ia
-        self.colour = c
-        self.material = m
-        self.cross_sect = cs
-        self.cross_min = cmin
-        self.cross_max = cmax
-        self.current = cur
-        self.voltage = vol
-"""
+    def width(self):
+        if 'Ширина (a)' in self.tech_data:
+            ind = int(self.tech_data.index('Ширина (a)'))
+            return str(self.tech_data[ind + 1])
+        else:
+            return ''
+
+    def height(self):
+        if 'Длина (b)' in self.tech_data:
+            ind = int(self.tech_data.index('Длина (b)'))
+            return str(self.tech_data[ind + 1])
+        else:
+            return ''
+
+    def depth(self):
+        if 'Высота (c)' in self.tech_data:
+            ind = int(self.tech_data.index('Высота (c)'))
+            return str(self.tech_data[ind + 1])
+        else:
+            return ''
+
+    def graph_file(self):
+        return str(self.part_num+'.jpg')
+
+    def colour(self):
+        if 'Цвет' in self.tech_data:
+            ind = int(self.tech_data.index('Цвет'))
+            return str(self.tech_data[ind + 1])
+        else:
+            return ''
+
+    def material(self):
+        if 'Материал' in self.tech_data:
+            ind = int(self.tech_data.index('Материал'))
+            return str(self.tech_data[ind + 1])
+        else:
+            return ''
+
+    def cross_sect(self):
+        if 'Сечение гибкого проводника макс. ' in self.tech_data:
+            ind = int(self.tech_data.index('Сечение гибкого проводника макс. '))
+            return str(self.tech_data[ind + 1])
+        else:
+            return ''
+
+    def cross_min(self):
+        if 'Сечение гибкого проводника мин. ' in self.tech_data:
+            ind = int(self.tech_data.index('Сечение гибкого проводника мин. '))
+            return str(self.tech_data[ind + 1])
+        else:
+            return ''
+
+    def cross_max(self):
+        if 'Сечение гибкого проводника макс. ' in self.tech_data:
+            ind = int(self.tech_data.index('Сечение гибкого проводника макс. '))
+            return str(self.tech_data[ind + 1])
+        else:
+            return ''
+
+    def current(self):
+        if 'Номинальный ток IN' in self.tech_data:
+            ind = int(self.tech_data.index('Номинальный ток IN'))
+            return str(self.tech_data[ind + 1])
+        else:
+            return ''
+
+    def voltage(self):
+        if 'Номинальное напряжение UN' in self.tech_data:
+            ind = int(self.tech_data.index('Номинальное напряжение UN'))
+            return str(self.tech_data[ind + 1])
+        else:
+            return ''
 
 
 

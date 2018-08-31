@@ -1,3 +1,12 @@
+def input_check():
+    i = input('please enter a digit: ')
+    if str(i).isdigit():
+        return i
+    else:
+        print('it is not a digit, please re-enter')
+        return input_check()
+
+
 def data_import(i):
     from openpyxl import load_workbook
     import os
@@ -63,9 +72,9 @@ def data_search(i):
         }
 
     # запрос данных
-    r = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+i+
+    r = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+str(i)+
                      '&library=ruru&pcck=P-22-03-01-02&tab=2&selectedCategory=ALL', headers=headers)
-    s = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+i+
+    s = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+str(i)+
                      '&library=ruru&pcck=P-22-03-01-02&tab=1&selectedCategory=ALL', headers=headers)
 
     if r.status_code == requests.codes.ok and s.status_code == requests.codes.ok:
@@ -78,8 +87,8 @@ def data_search(i):
         dirty_desc = soup.find_all("div", class_="pxc-prod-detail-txt")
         dirty_short_desc = soup.h1
         dirty_tech_data = soup.find_all("table", class_="pxc-tbl")
-       # len(soup.find_all("table", class_="pxc-tbl")) can count num of tables, and split them
-       # test = soup.find_all("table", class_="pxc-tbl")[0]
+        # len(soup.find_all("table", class_="pxc-tbl")) can count num of tables, and split them
+        # test = soup.find_all("table", class_="pxc-tbl")[0]
 
         soup.clear()
         # выгружаем текст
@@ -120,7 +129,8 @@ def data_search(i):
 
         return short_desc, desc[1], tech_data1, comm_data1
     else:
-        return 0
+        return '0'
+
 
 def image_search(i):
     import requests
@@ -147,7 +157,7 @@ def image_search(i):
         image_url_large = image_url_small.replace("small1", "large")
         image_url_large = image_url_large.replace("int_01", "int_04")
         return image_url_large
-    return 0
+    return ''
 
 
 def image_download(i, j):
