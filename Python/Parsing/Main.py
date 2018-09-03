@@ -36,14 +36,14 @@ while i < int(x):
                            t1.cat_page(), t1.pack_unit(), t1.UNIT, t1.weight(), t1.width(), t1.height(),
                            t1.depth(), t1.graph_file(), t1.colour(), t1.material(), t1.cross_sect(),
                            t1.cross_min(), t1.cross_max(), t1.current(), t1.voltage()]
-                save_num_sync(str(last_used_num))
-                print(TextSum)
+                data_save(i+2, TextSum)
                 tic.append(time.time())
                 print('calculation time: '+str(int(tic[i+2] - tic[0]))+' seconds')
         else:
                 print('no data, something wrong')
         print('iteration: '+str(i))
         i += 1
+save_num_sync(str(last_used_num))
 
 # сохранение последнего считанного заказного номер в файле temp
 input('bye')
