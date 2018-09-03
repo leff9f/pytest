@@ -65,6 +65,7 @@ def save_num_sync(last_used_num):
 def data_search(i):
     import requests
     from bs4 import BeautifulSoup
+    from multiprocessing import Pool
 
     # описание заголовка для запроса
     headers = {

@@ -40,6 +40,9 @@ class Terminals:
         if 'Ширина (a)' in self.tech_data:
             ind = int(self.tech_data.index('Ширина (a)'))
             return str(self.tech_data[ind + 1])
+        elif 'Ширина' in self.tech_data:
+            ind = int(self.tech_data.index('Ширина'))
+            return str(self.tech_data[ind + 1])
         else:
             return ''
 
@@ -47,12 +50,18 @@ class Terminals:
         if 'Длина (b)' in self.tech_data:
             ind = int(self.tech_data.index('Длина (b)'))
             return str(self.tech_data[ind + 1])
+        elif 'Длина' in self.tech_data:
+            ind = int(self.tech_data.index('Длина'))
+            return str(self.tech_data[ind + 1])
         else:
             return ''
 
     def depth(self):
         if 'Высота (c)' in self.tech_data:
             ind = int(self.tech_data.index('Высота (c)'))
+            return str(self.tech_data[ind + 1])
+        elif 'Высота' in self.tech_data:
+            ind = int(self.tech_data.index('Высота'))
             return str(self.tech_data[ind + 1])
         else:
             return ''
@@ -71,12 +80,18 @@ class Terminals:
         if 'Материал' in self.tech_data:
             ind = int(self.tech_data.index('Материал'))
             return str(self.tech_data[ind + 1])
+        elif 'Изоляционный материал' in self.tech_data:
+            ind = int(self.tech_data.index('Изоляционный материал'))
+            return str(self.tech_data[ind + 1])
         else:
             return ''
 
     def cross_sect(self):
         if 'Сечение гибкого проводника макс. ' in self.tech_data:
             ind = int(self.tech_data.index('Сечение гибкого проводника макс. '))
+            return str(self.tech_data[ind + 1])
+        elif 'Сечение гибкого проводника макс.' in self.tech_data:
+            ind = int(self.tech_data.index('Сечение гибкого проводника макс.'))
             return str(self.tech_data[ind + 1])
         else:
             return ''
@@ -85,12 +100,18 @@ class Terminals:
         if 'Сечение гибкого проводника мин. ' in self.tech_data:
             ind = int(self.tech_data.index('Сечение гибкого проводника мин. '))
             return str(self.tech_data[ind + 1])
+        elif 'Сечение гибкого проводника мин.' in self.tech_data:
+            ind = int(self.tech_data.index('Сечение гибкого проводника мин.'))
+            return str(self.tech_data[ind + 1])
         else:
             return ''
 
     def cross_max(self):
         if 'Сечение гибкого проводника макс. ' in self.tech_data:
             ind = int(self.tech_data.index('Сечение гибкого проводника макс. '))
+            return str(self.tech_data[ind + 1])
+        if 'Сечение гибкого проводника макс.' in self.tech_data:
+            ind = int(self.tech_data.index('Сечение гибкого проводника макс.'))
             return str(self.tech_data[ind + 1])
         else:
             return ''

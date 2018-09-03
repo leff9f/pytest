@@ -2,7 +2,10 @@ from Classes import Terminals
 from data import data_num, open_last_num, data_search
 from data import image_search, image_download, data_import
 from data import save_num_sync, data_save, input_check
+import time
 
+# время выполнения
+tic = [time.time()]
 
 # подсчет числа заказных номеров подготовленных для запросов
 part_num_length = data_num()
@@ -21,8 +24,8 @@ while i < int(x):
         last_used_num = open_last_num()+i
         part_num = data_import(last_used_num)
         data = data_search(part_num)
+        img_src = image_search(part_num)
         if data != '0':
-                img_src = image_search(part_num)
                 if img_src != '':
                         image_download(img_src, part_num)
                 t1 = Terminals(part_num, data[0], data[1], data[2], data[3])
@@ -49,6 +52,8 @@ while i < int(x):
                 data_save(i + 2, 21, t1.voltage())
                 save_num_sync(str(last_used_num))
                 print(t1.part_num)
+                tic.append(time.time())
+                print('calculation time: '+str(int(tic[i+1] - tic[0]))+' seconds')
         else:
                 print('no data, something wrong')
         print('iteration: '+str(i))
