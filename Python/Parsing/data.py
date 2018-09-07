@@ -23,12 +23,16 @@ def data_import(i):
         return "None"
 
 
-def data_save(i, j, k):
+def data_save(i, j):
     from openpyxl import load_workbook
 
     wb = load_workbook("Terminals.xlsx")  # open file
     sheet = wb["ROPTerminals"]  # select work sheet
-    sheet.cell(row=i, column=j).value = k
+    m = 0
+    n = len(j)
+    while m < n:
+        sheet.cell(row=i, column=m+1).value = j[m]
+        m += 1
     wb.save(filename="Terminals.xlsx")
 
 
@@ -65,7 +69,6 @@ def save_num_sync(last_used_num):
 def data_search(i):
     import requests
     from bs4 import BeautifulSoup
-    from multiprocessing import Pool
 
     # описание заголовка для запроса
     headers = {
@@ -73,9 +76,9 @@ def data_search(i):
         }
 
     # запрос данных
-    r = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+str(i)+
+    r = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+str(i) +
                      '&library=ruru&pcck=P-22-03-01-02&tab=2&selectedCategory=ALL', headers=headers)
-    s = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+str(i)+
+    s = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+str(i) +
                      '&library=ruru&pcck=P-22-03-01-02&tab=1&selectedCategory=ALL', headers=headers)
 
     if r.status_code == requests.codes.ok and s.status_code == requests.codes.ok:
@@ -109,7 +112,7 @@ def data_search(i):
         tech_data1 = []
         # пересобираем текстовые данные
         for a in tech_data:
-            if a != '' and a != '[' and a != ']' and a !=', ':
+            if a != '' and a != '[' and a != ']' and a != ', ':
                 tech_data1.append(a)
 
         # загружаем данные в парсер
@@ -142,8 +145,8 @@ def image_search(i):
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko',
     }
     # запрос данных
-    im = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+i+
-                     '&library=ruru&pcck=P-22-03-01-02&tab=1&selectedCategory=ALL', headers=headers)
+    im = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid=' + i +
+                      '&library=ruru&pcck=P-22-03-01-02&tab=1&selectedCategory=ALL', headers=headers)
     if im.status_code == requests.codes.ok:
         # считываем текстовые данные
         im_text = im.text
