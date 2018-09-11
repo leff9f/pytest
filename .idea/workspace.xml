@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1d73163-da9b-412b-9ee0-fbcc3114fc48" name="Default" comment="11.09.18&#10;added multiprocessing and comments">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/1312.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/1313.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/OC_Parsing.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/OC_Parsing_urllib.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/cable_list.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/class.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/def.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/dir.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/example.xls" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/excel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/for.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/in.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/param.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/python.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/python365.chm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/test.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Python/pdfpars.py" afterPath="$PROJECT_DIR$/Python/cable list pdf to xls/cable_list_pdf_to_xls.py" />
+    <list default="true" id="f1d73163-da9b-412b-9ee0-fbcc3114fc48" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Python/bitbucket-pipelines.yml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Python/checkio.py" afterPath="$PROJECT_DIR$/Python/Checkio solves/checkio.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Python/checkio_try.py" afterPath="$PROJECT_DIR$/Python/Checkio solves/checkio_try.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Python/strt.py" afterPath="$PROJECT_DIR$/Python/strt.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,7 +36,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="cable_list_pdf_to_xls.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cable_list_pdf_to_xls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Python/cable list pdf to xls/cable_list_pdf_to_xls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="736">
@@ -60,6 +44,26 @@
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pars.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Python/pars.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pdfparstest.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Python/pdfparstest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -154,6 +158,18 @@
               <item name="ProjectsOcean" type="462c0819:PsiDirectoryNode" />
               <item name="Python" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ProjectsOcean" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectsOcean" type="462c0819:PsiDirectoryNode" />
+              <item name="Python" type="462c0819:PsiDirectoryNode" />
+              <item name="Checkio solves" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectsOcean" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectsOcean" type="462c0819:PsiDirectoryNode" />
+              <item name="Python" type="462c0819:PsiDirectoryNode" />
+              <item name="crtp" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -168,6 +184,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\ProjectsOcean\Python\Checkio solves" />
       <recent name="C:\ProjectsOcean\Python\cable list pdf to xls" />
     </key>
   </component>
@@ -403,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1536657272972</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="11.09.18&#10;added multiprocessing and comments">
+      <created>1536658028647</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1536658028647</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -418,7 +442,7 @@
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3683369" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3683369" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.51492536" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -630,14 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python/bitbucket-pipelines.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Python/Parsing/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="430">
@@ -680,7 +696,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python/checkio_try.py">
+    <entry file="file://$PROJECT_DIR$/Python/Checkio solves/checkio_try.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -688,7 +704,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python/checkio.py">
+    <entry file="file://$PROJECT_DIR$/Python/Checkio solves/checkio.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
@@ -786,22 +802,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python/pdfparstest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Python/pars.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Python/Git.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -850,6 +850,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Python/bitbucket-pipelines.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Python/cable list pdf to xls/cable_list_pdf_to_xls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
@@ -857,6 +865,22 @@
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python/pars.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python/pdfparstest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
