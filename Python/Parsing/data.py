@@ -66,74 +66,73 @@ def save_num_sync(last_used_num):
     temp_file.close()
 
 
-def data_search(i):
+def data_collect(i):
     import requests
-    from bs4 import BeautifulSoup
-
     # описание заголовка для запроса
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko',
-        }
+    }
+    r = requests.get(i, headers=headers)
 
-    # запрос данных
-    r = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+str(i) +
-                     '&library=ruru&pcck=P-22-03-01-02&tab=2&selectedCategory=ALL', headers=headers)
-    s = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid='+str(i) +
-                     '&library=ruru&pcck=P-22-03-01-02&tab=1&selectedCategory=ALL', headers=headers)
-
-    if r.status_code == requests.codes.ok and s.status_code == requests.codes.ok:
+    if r.status_code == requests.codes.ok:
         # считываем текстовые данные
-        r_text = r.text
-        s_text = s.text
-        # загружаем данные в парсер
-        soup = BeautifulSoup(r_text, "html.parser")
-        # считываем данные
-        dirty_desc = soup.find_all("div", class_="pxc-prod-detail-txt")
-        dirty_short_desc = soup.h1
-        dirty_tech_data = soup.find_all("table", class_="pxc-tbl")
-        # len(soup.find_all("table", class_="pxc-tbl")) can count num of tables, and split them
-        # test = soup.find_all("table", class_="pxc-tbl")[0]
-
-        soup.clear()
-        # выгружаем текст
-        desc = str(dirty_desc)
-        soup = BeautifulSoup(desc, "html.parser")
-        desc = soup.get_text()
-        desc = desc.split("\n")
-        # выгружаем текст
-        short_desc = str(dirty_short_desc)
-        soup = BeautifulSoup(short_desc, "html.parser")
-        short_desc = soup.get_text()
-        # выгружаем текст
-        tech_data = str(dirty_tech_data)
-        soup = BeautifulSoup(tech_data, "html.parser")
-        tech_data = soup.get_text()
-        tech_data = tech_data.split("\n")
-        tech_data1 = []
-        # пересобираем текстовые данные
-        for a in tech_data:
-            if a != '' and a != '[' and a != ']' and a != ', ':
-                tech_data1.append(a)
-
-        # загружаем данные в парсер
-        soup = BeautifulSoup(s_text, "html.parser")
-        # считываем данные
-        dirty_comm_data = soup.find("table", class_="pxc-tbl")
-        soup.clear()
-        # выгружаем текст
-        comm_data = str(dirty_comm_data)
-        soup = BeautifulSoup(comm_data, "html.parser")
-        comm_data = soup.get_text()
-        comm_data = comm_data.split("\n")
-        comm_data1 = []
-        # пересобираем текстовые данные
-        for a in comm_data:
-            if a != '':
-                comm_data1.append(a)
-
-        return short_desc, desc[1], tech_data1, comm_data1
+        return r.text
     else:
         return '0'
+
+
+def data_search(r_text, s_text):
+    from bs4 import BeautifulSoup
+    soup = BeautifulSoup(r_text, "html.parser")
+    # считываем данные
+    dirty_desc = soup.find_all("div", class_="pxc-prod-detail-txt")
+    dirty_short_desc = soup.h1
+
+    # check existing short description, if none - return '0', because at phoenix site it mean no data!
+    if dirty_short_desc is None:
+        return '0'
+
+    dirty_tech_data = soup.find_all("table", class_="pxc-tbl")
+    # len(soup.find_all("table", class_="pxc-tbl")) can count num of tables, and split them
+    # test = soup.find_all("table", class_="pxc-tbl")[0]
+    soup.clear()
+    # выгружаем текст
+    desc = str(dirty_desc)
+    soup = BeautifulSoup(desc, "html.parser")
+    desc = soup.get_text()
+    desc = desc.split("\n")
+    # выгружаем текст
+    short_desc = str(dirty_short_desc)
+    soup = BeautifulSoup(short_desc, "html.parser")
+    short_desc = soup.get_text()
+    # выгружаем текст
+    tech_data = str(dirty_tech_data)
+    soup = BeautifulSoup(tech_data, "html.parser")
+    tech_data = soup.get_text()
+    tech_data = tech_data.split("\n")
+    tech_data1 = []
+    # пересобираем текстовые данные
+    for a in tech_data:
+        if a != '' and a != '[' and a != ']' and a !=', ':
+            tech_data1.append(a)
+
+    # загружаем данные в парсер
+    soup = BeautifulSoup(s_text, "html.parser")
+    # считываем данные
+    dirty_comm_data = soup.find("table", class_="pxc-tbl")
+    soup.clear()
+    # выгружаем текст
+    comm_data = str(dirty_comm_data)
+    soup = BeautifulSoup(comm_data, "html.parser")
+    comm_data = soup.get_text()
+    comm_data = comm_data.split("\n")
+    comm_data1 = []
+    # пересобираем текстовые данные
+    for a in comm_data:
+        if a != '':
+            comm_data1.append(a)
+
+    return short_desc, desc[1], tech_data1, comm_data1
 
 
 def image_search(i):
@@ -147,20 +146,22 @@ def image_search(i):
     # запрос данных
     im = requests.get('https://www.phoenixcontact.com/online/portal/ru/?uri=pxc-oc-itemdetail:pid=' + i +
                       '&library=ruru&pcck=P-22-03-01-02&tab=1&selectedCategory=ALL', headers=headers)
-    if im.status_code == requests.codes.ok:
-        # считываем текстовые данные
-        im_text = im.text
-        # загружаем данные в парсер
-        soup = BeautifulSoup(im_text, "html.parser")
-        # считываем данные
-        dirty_image_ad = soup.find_all("img", class_="pxc-img")
-        # выгружаем текст
-        image_src = str(dirty_image_ad).split()
+
+    # считываем текстовые данные
+    im_text = im.text
+    # загружаем данные в парсер
+    soup = BeautifulSoup(im_text, "html.parser")
+    # считываем данные
+    dirty_image_ad = soup.find_all("img", class_="pxc-img")
+    # выгружаем текст
+    image_src = str(dirty_image_ad).split()
+    if im.status_code == requests.codes.ok and len(image_src) > 3:
         image_url_proc = image_src[3].lstrip("\"src=").rstrip("\"")
         image_url_small = "https://www.phoenixcontact.com/" + image_url_proc
         image_url_large = image_url_small.replace("small1", "large")
         image_url_large = image_url_large.replace("int_01", "int_04")
         return image_url_large
+    print('image not found')
     return ''
 
 
