@@ -7,9 +7,9 @@ print (match.group(1))
 num3=100
 print(param.num1+num2)
 
-L=[123,'ttt',456]
+L = [123, 'ttt', 456]
 print(len(L))
-L=L+[5]
+L = L+[5]
 print(len(L))
 print(L)
 
