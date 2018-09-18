@@ -28,7 +28,8 @@ class Terminals:
         ind = int(self.comm_data.index('Вес/шт. (без упаковки)'))
         if ind:
             weight = str(self.comm_data[ind + 1]).strip(' GRM')
-            weight = weight.replace(',', '.')
+            weight = str(weight).replace(',', '.')
+            weight = weight.encode('ascii', errors='ignore')
             weight = float(weight)
             weight = int(weight)
             if weight < 10:
