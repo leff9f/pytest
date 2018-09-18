@@ -404,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1536658157182</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="18.09.18&#10;bug fixed - weight with wrong symbols clearing &#10;before convert to float type">
+      <created>1537265758625</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1537265758625</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -506,7 +513,8 @@
     <MESSAGE value="07.09.18 on work multiprocessing" />
     <MESSAGE value="31.08.18 on work" />
     <MESSAGE value="11.09.18&#10;added multiprocessing and comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="11.09.18&#10;added multiprocessing and comments" />
+    <MESSAGE value="18.09.18&#10;bug fixed - weight with wrong symbols clearing &#10;before convert to float type" />
+    <option name="LAST_COMMIT_MESSAGE" value="18.09.18&#10;bug fixed - weight with wrong symbols clearing &#10;before convert to float type" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
