@@ -21,6 +21,7 @@ with open(file_name+'.pdf', 'rb') as f:
     print(len(doc))
 # print(doc)
 
+
 # open txt file for writing and write text from pdf
 with open('1312.txt', 'w', encoding='utf-8') as fg:
     fg.write(str(doc))
@@ -164,38 +165,14 @@ for i in txt_combine2:
         ws.cell(row=int(row_num), column=int(6), value=str(i).replace('>', ''))
     if i[m-2:m] == 'k.':
         ws.cell(row=int(row_num), column=int(7), value=str(i).replace(' stk.', ''))
+    if str(i).find('stk.') != -1:
+        ws.cell(row=int(row_num), column=int(7), value=str(i[0:str(i).find('stk.')-1]))
     if i[0] == ']':
         i = str(i).replace('000000 кг', '')
         ws.cell(row=int(row_num), column=int(8), value=str(i).replace(']', ''))
     if i[0] == '{':
         ws.cell(row=int(row_num), column=int(9), value=str(i).replace('{', ''))
 
-
-
-'''
-j = 2
-k = 0
-m = 0
-
-for i in txt_sum:
-    if m % 5 == 0:
-        j += 1
-        k = 0
-    k += 1
-    m += 1
-    if k == 1:
-        ws.cell(row=int(j), column=int(4), value=txt_sum[m-1])
-    if k == 2:
-        ws.cell(row=int(j), column=int(5), value=txt_sum[m-1])
-    if k == 3:
-        ws.cell(row=int(j), column=int(2), value=txt_sum[m-1])
-    if k == 4:
-        ws.cell(row=int(j), column=int(3), value=txt_sum[m-1])
-    if k == 5:
-        ws.cell(row=int(j), column=int(1), value=txt_sum[m-1])
-    ws.cell(row=int(j), column=int(k)).style = minor_style
-    print(j)
-'''
 # save excel file
 wb.save(file_name+'_spec_list.xlsx')
 
