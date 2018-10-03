@@ -9,3 +9,4 @@ for k in range(2, N):
 for k in range(N):
     if A[k]:
         print(k)
+

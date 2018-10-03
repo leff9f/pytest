@@ -22,6 +22,7 @@ def gen_bin(M, prefix=""):
     gen_bin(M-1, prefix + "2")
 
 
-#gen_bin(1)
+gen_bin(1)
 
 generate_number(2, 2)
+
