@@ -1,10 +1,18 @@
-def gen_bin(M, prefix=""):
-    if M == 0:
-        print(prefix)
-        return
-    gen_bin(M-1, prefix+"0")
-    gen_bin(M-1, prefix+"1")
-    gen_bin(M-1, prefix + "2")
+import os
+A = os.listdir("d:/Downloads/data/")
+j=0
+k=0
+for i in A:
+    j += 1
+    #print(j)
+    f = open("d:/Downloads/data/"+i, 'r', encoding='utf-8', errors='ignore')
+    data = f.read()
+    f.close()
+    A = "7811653204"
 
+    if data.find(A) != -1:
+        k+=1
+        print(data[data.find(A)-100:data.find(A)+500])
+print(k)
+#print(data)
 
-gen_bin(3)
