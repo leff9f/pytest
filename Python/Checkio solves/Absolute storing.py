@@ -5,7 +5,7 @@ def checkio(numbers_array: tuple) -> list:
             if abs(A[j]) > abs(A[j+1]):
                 A[j], A[j+1] = A[j+1], A[j]
     return A
-
+#comment
 #These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
     def check_it(array):
