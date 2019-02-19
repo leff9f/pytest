@@ -8,7 +8,7 @@ for i in A:
     f = open("d:/Downloads/data/"+i, 'r', encoding='utf-8', errors='ignore')
     data = f.read()
     f.close()
-    A = "7729108750"
+    A = "541074210571"
 
     if data.find(A) != -1:
         k+=1
