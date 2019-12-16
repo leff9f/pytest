@@ -1,2 +1,2 @@
 print('commit')
-print('feature')
+print('master')
