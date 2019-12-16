@@ -1,4 +1,4 @@
 print('m2')
-x = 10
+y = 10
 print('f1')
-print(x)
+print(y)
