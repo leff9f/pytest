@@ -1,2 +1,0 @@
-print('commit')
-print('master')
