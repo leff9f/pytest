@@ -1,3 +1,4 @@
 print('m2')
-print('m3')
+x = 10
 print('f1')
+print(x)
